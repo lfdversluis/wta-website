@@ -1,0 +1,17 @@
+extends skeleton
+
+
+block content
+    .container.page-container
+        h1.page-title #{pageTitle}
+
+        p Below we present talks sorted by year that use the Workflow Trace Archive.
+
+        each talkList in talksPerYear
+            h3= talkList.year
+
+            each talk in talkList.talks
+                +talk-list-item(talk)
+
+append script-load
+    script(src='js/publications.js')

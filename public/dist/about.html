@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Workflow Trace Archive - About Us</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="Workflow Trace Archive - @Large Research - Massivizing Computer Systems">
+    <meta property="og:title" content="Workflow Trace Archive">
+    <meta property="og:determiner" content="the">
+    <meta property="og:description" content="Workflow Trace Archive - @Large Research - Massivizing Computer Systems">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wta.atlarge-research.com/">
+    <meta property="og:image" content="https://wta.atlarge-research.com/images/atlarge-banner.png">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script src="https://use.fontawesome.com/4b29bc1f56.js"></script>
+  </head>
+  <body>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+      <div class="container"><a class="navbar-brand" href="/">Workflow Trace Archive</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbar">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="/traces.html">Traces</a></li>
+            <li class="nav-item"><a class="nav-link" href="/traceformat.html">Trace format</a></li>
+            <li class="nav-item"><a class="nav-link" href="/upload.html">Upload</a></li>
+            <li class="nav-item"><a class="nav-link" href="/talks.html">Talks</a></li>
+            <li class="nav-item"><a class="nav-link" href="/publications.html">Publications</a></li>
+            <li class="nav-item"><a class="nav-link" href="/people.html">People</a></li>
+            <li class="nav-item active"><a class="nav-link" href="/about.html">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container page-container">
+      <h1>The Workflow Trace Archive</h1>
+      <p>The primary purpose of the Workflow Trace Archive (WTA) is to provide (anonymized) workload traces from cluster and cloud environments to combat the lack of diverse traces avbailable to researchers and to practitioners alike.</p>
+      <h2>1. Motivation</h2>
+      <p>
+        Research into cloud and clusters has increased during the past decade. While new scheduling and provisioning algorithms, architectures, and benchmarks are proposed, few real-world or realistic workloads are made open-source.
+        A diverse set of workloads is essential to objectively compare algorithms, enable claims of performance, investigate the behavior of systems, etc. 
+        Prior work of the AtLarge group on autoscalers has <a href="https://atlarge-research.com/pdfs/lfdversluis-ccgrid-comparing-autoscalers.pdf">demonstrated</a> this need.<br/>
+
+                A second motivation is the lack of overview.
+        Right now, one requires knowledge of specific articles offering their data as open-source artefact.
+        The lack of a central repository where such datasets can be downloaded, and more importantly uploaded, hampers the spread and adaption of using a rich, and diverse set of workloads to experiment with.<br/>
+
+                Our third and final motivation is standardization.
+        Open-source datasets differ in format, requiring researchers to implement several parsing tools to handle the different formats.
+        To allow researchers to focus on their research, we offer all datasets in our <a href="traceformat.html">workflow format</a>.
+
+                  </p>
+      <h2>2. Approach</h2>
+      <p>Our approach to building the Workflow Trace Archive is:</p>
+      <ul>
+        <li>We design a (compressed, machine readable) format that allows parsing through scripting, and through big data tools such as <a href="https://spark.apache.org/" target="_blank">Apache Spark</a>. To allow data reuse and community inter-connection, the WTA format contains a rich set of metrics carefully selected from other formats and appended by the WTA team.</li>
+        <li>We create and <a href="https://github.com/lfdversluis/wta-tools" target="_blank">publish available online tools for parsing and conversion from different data formats</a>. Generic tools for detailed insight and statistical analysis of the data in WTA format are also <a href="https://github.com/lfdversluis/wta-analysis" target="_blank">available as open-source data</a>.</li>
+        <li>In the future, we will develop methods to upload traces to the Workflow Trace Archive.</li>
+        <li>We created, host, and maintain the Workflow Trace Archive website.</li>
+      </ul>
+      <h3>3. Contributing Traces</h3>
+      <p>
+        The Workflow Trace Archive welcomes all contributions meeting the criteria listed below. 
+        To add traces, please contact one of the core members of the WTA.
+        Traces are only published if they meet the criteria and if we are empowered to do so legally. Naturally, we will give credit where its due.
+
+                Criteria:
+      </p>
+      <ul>
+        <li>The trace originates from a computing infrastructure parsing (workloads of) workflows.</li>
+        <li>The trace is either a real-world trace taken from a (production) environment, or is synthetic and used in published scientific work (we also include these for reproducibility purposes).</li>
+      </ul>
+      <h3 id="support_contact">4. Support and Contact</h3>
+      <p>For assistance in anonimizing traces, please look at <a href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/anonymize.py" target="_blank">our anonimization script</a> or reach out to us using the <a href="#support_contact">support and contact section</a>.<br/><br/></p>
+      <h3>5. The Workflow Trace Archive Team</h3>
+      <p>The people involved in the Workflow Trace Archive can be seen <a href="./people.html">here</a>.</p>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <p>If you use this archive, please cite our article "The Workflow Trace Archive: Open-Access Data from Public and Private Computing Infrastructures - Technical Report" available on <a href="https://arxiv.org/pdf/1906.07471.pdf">arXiv.org</a>.</p>
+        </div>
+        <div class="row">
+          <h3 class="col">Contact</h3>
+        </div>
+        <div class="row">
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"><span class="fa fa-envelope mr-1"></span><a href="mailto:info@atlarge-research.com?Subject=%5BAtLarge%5D%20">info@atlarge-research.com</a></div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right"><a class="mr-2" href="https://twitter.com/@LargeResearch" title="@LargeResearch Twitter"><span class="fa fa-twitter fa-3x"></span></a><a href="https://github.com/atlarge-research" title="@Large GitHub"><span class="fa fa-github fa-3x"></span></a></div>
+        </div>
+        <div class="row mt-5">
+          <div class="col text-center">
+            <p>&#169; Copyright 2019 @Large Research Group</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet" lazyload>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" lazyload>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+---
+- id: vu
+  title: Vrije Universiteit Amsterdam, Amsterdam, the Netherlands
+  types: 
+  - host
+  - sponsor
+  url: 'https://www.vu.nl/'
+  
+- id: tudelft
+  title: Technische Universiteit Delft, Delft, the Netherlands
+  types: 
+  - sponsor
+  url: 'https://www.tudelft.nl/en/'
+
+- id: google
+  title: Google Inc., Mountain View, CA, USA
+  types: 
+  - sponsor
+  url: 'https://research.google.com/'
+
+#- id: esciencecenter
+#  title: eScience Center, the Netherlands
+#  types: 
+#  - sponsor
+#  - partner
+#  url: 'https://www.esciencecenter.nl/'
+  
+- id: shell
+  title: Shell
+  types: 
+  - sponsor
+  url: 'https://www.shell.com/'
+  
+- id: innsbruck
+  title: University of Innsbruck, Austria
+  types: 
+  - host
+  - sponsor
+  url: 'https://www.uibk.ac.at/index.html.en'
+
+#- id: uva
+#  title: University of Amsterdam, the Netherlands
+#  types: 
+#  - partner
+#  url: 'https://www.uva.nl/'
+  
+- id: workflowhub
+  title: WorkflowHub
+  types:
+  - sponsor
+  url: 'http://workflowhub.isi.edu/'
+  
+- id: lanl
+  title: LANL
+  types:
+  - sponsor
+  url: 'https://www.lanl.gov/'
+  
+- id: pegasus
+  title: Pegasus
+  types:
+  - sponsor
+  url: 'https://pegasus.isi.edu'
+  
+- id: spec
+  title: SPEC RG Cloud
+  types:
+  - sponsor
+  url: 'https://research.spec.org/'
+  
+- id: askalon
+  title: ASKALON Grid
+  types:
+  - sponsor
+  url: 'http://askalon.org'
+  
+- id: alibaba
+  title: Alibaba
+  types:
+  - sponsor
+  url: 'http://www.alibaba.com'
+  
+- id: twosigma
+  title: Two Sigma
+  types:
+  - sponsor
+  url: 'https://www.twosigma.com/'
+  
+# Partners
+  
+- id: das5
+  title: Distributed ASCI Supercomputer 5, the Netherlands
+  types: 
+  - partner
+  url: 'https://www.cs.vu.nl/das5/'

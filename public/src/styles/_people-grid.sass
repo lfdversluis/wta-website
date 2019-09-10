@@ -1,0 +1,20 @@
+@import base
+
+.people-grid-item
+  // Width of each image item, according to viewport
+  @media (min-width: $screen-lg-min)
+    height: 260px
+
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max)
+    height: 300px
+
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max)
+    height: 300px
+
+  @media (min-width: $screen-xs-min) and (max-width: $screen-xs-max)
+    height: 330px
+
+  height: 260px
+
+  img
+    +border-radius(50%)

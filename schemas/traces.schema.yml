@@ -1,0 +1,176 @@
+$schema: 'http://json-schema.org/draft-04/schema#'
+description: "An array containing trace information"
+type: array
+items:
+  description: "A trace"
+  type: object
+  properties:
+    id:
+      description: "The name of the trace"
+      type: string
+    authors:
+      type: array
+      items:
+        required: []
+        properties: {}
+    cov_cpu_task:
+      type: number
+    cov_memory:
+      type: number
+    date_end: {}
+    date_start: {}
+    domain:
+      type: string
+      minLength: 1
+    first_quartile_cpu_task:
+      type: number
+    first_quartile_memory:
+      type: number
+    max_cpu_task:
+      type: number
+    max_memory:
+      type: number
+    mean_cpu_task:
+      type: number
+    mean_memory:
+      type: number
+    median_cpu_task:
+      type: number
+    median_memory:
+      type: number
+    min_cpu_task:
+      type: number
+    min_memory:
+      type: number
+    num_cpus:
+      type: number
+    num_groups:
+      type: number
+    num_sites:
+      type: number
+    num_users:
+      type: number
+    std_cpu_task:
+      type: number
+    std_memory:
+      type: number
+    third_quartile_cpu_task:
+      type: number
+    third_quartile_memory:
+      type: number
+    total_cpu_seconds:
+      type: number
+    total_tasks:
+      type: number
+    total_workflows:
+      type: number
+    workflows:
+      type: array
+      uniqueItems: true
+      minItems: 1
+      items:
+        required:
+          - critical_path_length
+          - critical_path_task_count
+          - id
+          - task_count
+          - ts_submit
+        properties:
+          critical_path_length:
+            type: number
+          critical_path_task_count:
+            type: number
+          id:
+            type: number
+          task_count:
+            type: number
+          tasks:
+            type: array
+            uniqueItems: true
+            minItems: 1
+            items:
+              required:
+                - cpus
+                - disk_space
+                - group_id
+                - id
+                - memory_consumption
+                - network_usage
+                - platform
+                - runtime
+                - submission_site
+                - ts_submit
+                - user_id
+                - wait_time
+                - workflow_id
+              properties:
+                children:
+                  type: array
+                  items:
+                    required: []
+                    properties: {}
+                cpus:
+                  type: number
+                disk_space:
+                  type: number
+                group_id:
+                  type: number
+                id:
+                  type: number
+                memory_consumption:
+                  type: number
+                network_usage:
+                  type: number
+                nfrs:
+                  type: array
+                  items:
+                    required: []
+                    properties: {}
+                parents:
+                  type: array
+                  items:
+                    required: []
+                    properties: {}
+                platform:
+                  type: string
+                runtime:
+                  type: number
+                submission_site:
+                  type: number
+                ts_submit:
+                  type: number
+                user_id:
+                  type: number
+                wait_time:
+                  type: number
+                workflow_id:
+                  type: number
+          ts_submit:
+            type: number
+required:
+  - authors
+  - cov_cpu_task
+  - cov_memory
+  - domain
+  - first_quartile_cpu_task
+  - first_quartile_memory
+  - max_cpu_task
+  - max_memory
+  - mean_cpu_task
+  - mean_memory
+  - median_cpu_task
+  - median_memory
+  - min_cpu_task
+  - min_memory
+  - num_cpus
+  - num_groups
+  - num_sites
+  - num_users
+  - std_cpu_task
+  - std_memory
+  - third_quartile_cpu_task
+  - third_quartile_memory
+  - total_cpu_seconds
+  - total_tasks
+  - total_workflows
+  - workflows

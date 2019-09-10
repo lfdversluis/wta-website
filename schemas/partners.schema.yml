@@ -1,0 +1,31 @@
+---
+"$schema": http://json-schema.org/draft-04/schema#
+description: A list of partners of the group (including hosts, sponsors, and partners, across industry and academia)
+type: array
+items:
+  description: A host/sponsor/partner
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      description: Partner identifier, must be unique and is recommended to be lower-case
+      type: string
+    title:
+      description: Title of the collaborating entity
+      type: string
+    types:
+      description: Type of the entity
+      type: array
+      items:
+        title: The types
+        type: string
+        enum: ["host", "sponsor", "partner"]
+        minItems: 1
+    url:
+      description: URL to the web page of the entity
+      type: string
+  required:
+  - id
+  - title
+  - types
+  - url

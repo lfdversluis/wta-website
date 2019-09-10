@@ -1,0 +1,14 @@
+//// Utility functions
+// Talk page link
+- function talkHref(talk) { return '/talks/' + talk.id + '.html' }
+
+//// Mixins
+mixin talk-list-item(talk)
+    .list-group-item.flex-column.align-items-start
+        .d-flex.w-100.justify-content-between
+            a(href= talk.url)
+                h5.mb-1= talk.title
+            small= talk.year
+        if talk.venue
+            p.mb-1= talk.venue
+        small= talk.speaker

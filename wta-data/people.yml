@@ -1,0 +1,45 @@
+---
+- id: lversluis
+  firstName: Laurens
+  lastName: Versluis
+  institution: Vrije Universiteit Amsterdam, The Netherlands
+  role: Lead Workflow Trace Archive
+
+  
+- id: rmatha
+  firstName: Roland
+  lastName: Mathá
+  institution: University of Innsbruck
+  role: Core Workflow Trace Archive
+
+- id: stalluri
+  firstName: Sacheendra
+  lastName: Talluri
+  institution: Delft University of Technology
+  role: Core Workflow Trace Archive
+
+- id: thegeman
+  firstName: Tim
+  lastName: Hegeman
+  institution: Vrije University Amsterdam
+  role: Core Workflow Trace Archive
+
+- id: rprodan
+  firstName: Radu
+  lastName: Prodan
+  institution: University of Klagenfurt
+  role: Consultant Workflow Trace Archive
+
+- id: edeelman
+  firstName: Ewa
+  lastName: Deelman
+  institution: University of Southern California
+  role: Consultant Workflow Trace Archive
+
+- id: aiosup
+  firstName: Alexandru
+  lastName: Iosup
+  institution: Vrije University Amsterdam
+  role: Consultant Workflow Trace Archive
+
+

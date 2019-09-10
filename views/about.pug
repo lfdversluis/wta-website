@@ -1,0 +1,47 @@
+extends skeleton
+
+
+block content
+    .container.page-container
+        h1 The Workflow Trace Archive
+        p The primary purpose of the Workflow Trace Archive (WTA) is to provide (anonymized) workload traces from cluster and cloud environments to combat the lack of diverse traces avbailable to researchers and to practitioners alike.
+                
+        h2 1. Motivation
+        p.
+            Research into cloud and clusters has increased during the past decade. While new scheduling and provisioning algorithms, architectures, and benchmarks are proposed, few real-world or realistic workloads are made open-source.
+            A diverse set of workloads is essential to objectively compare algorithms, enable claims of performance, investigate the behavior of systems, etc. 
+            Prior work of the AtLarge group on autoscalers has <a href="https://atlarge-research.com/pdfs/lfdversluis-ccgrid-comparing-autoscalers.pdf">demonstrated</a> this need.<br/>
+
+            A second motivation is the lack of overview.
+            Right now, one requires knowledge of specific articles offering their data as open-source artefact.
+            The lack of a central repository where such datasets can be downloaded, and more importantly uploaded, hampers the spread and adaption of using a rich, and diverse set of workloads to experiment with.<br/>
+
+            Our third and final motivation is standardization.
+            Open-source datasets differ in format, requiring researchers to implement several parsing tools to handle the different formats.
+            To allow researchers to focus on their research, we offer all datasets in our <a href="traceformat.html">workflow format</a>.
+                
+        h2 2. Approach
+        p Our approach to building the Workflow Trace Archive is:
+        ul
+          li We design a (compressed, machine readable) format that allows parsing through scripting, and through big data tools such as <a href="https://spark.apache.org/" target="_blank">Apache Spark</a>. To allow data reuse and community inter-connection, the WTA format contains a rich set of metrics carefully selected from other formats and appended by the WTA team.
+          li We create and <a href="https://github.com/lfdversluis/wta-tools" target="_blank">publish available online tools for parsing and conversion from different data formats</a>. Generic tools for detailed insight and statistical analysis of the data in WTA format are also <a href="https://github.com/lfdversluis/wta-analysis" target="_blank">available as open-source data</a>.
+          li In the future, we will develop methods to upload traces to the Workflow Trace Archive.
+          li We created, host, and maintain the Workflow Trace Archive website.
+
+        h3 3. Contributing Traces
+        p.
+            The Workflow Trace Archive welcomes all contributions meeting the criteria listed below. 
+            To add traces, please contact one of the core members of the WTA.
+            Traces are only published if they meet the criteria and if we are empowered to do so legally. Naturally, we will give credit where its due.
+            
+            Criteria:
+        ul
+            li The trace originates from a computing infrastructure parsing (workloads of) workflows.
+            li The trace is either a real-world trace taken from a (production) environment, or is synthetic and used in published scientific work (we also include these for reproducibility purposes).
+
+        h3#support_contact 4. Support and Contact
+        p For assistance in anonimizing traces, please look at <a href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/anonymize.py" target="_blank">our anonimization script</a> or reach out to us using the <a href="#support_contact">support and contact section</a>.<br/><br/>
+
+
+        h3 5. The Workflow Trace Archive Team
+        p The people involved in the Workflow Trace Archive can be seen <a href="./people.html">here</a>.

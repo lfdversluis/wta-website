@@ -1,0 +1,43 @@
+extends skeleton
+
+
+block content
+    .container-fluid.page-container
+        h1.page-title #{pageTitle}
+        
+        div.table-responsive
+            table(id="traces" class="table table-striped")
+                thead
+                    th(scope="col")= 'TraceID'
+                    th(scope="col")= 'Domain'
+                    th(scope="col")= 'Workflows'
+                    th(scope="col")= 'Tasks'
+                    th(scope="col")= 'Resources (Cores/Threads/etc.)'
+                    th(scope="col")= 'Sites'
+                    th(scope="col")= 'Users'
+                    //th(scope="col")= 'Scientific work'
+
+                tbody
+                    each trace in traces
+                        +trace-table-row(trace)
+        
+        
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous")
+        script(src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" crossorigin="anonymous")
+        script(src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" crossorigin="anonymous")
+        
+        script.
+            $(document).ready(function() {
+                $.noConflict();
+                $('#traces').DataTable({
+                "columns": [
+                    { title: "TraceID" },
+                    { title: "Domain" },
+                    { "title": "Workflows", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+                    { "title": "Tasks", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+                    { "title": "Resources (Cores/Threads/etc.)", render: $.fn.dataTable.render.number(',', '.', 2, ''), className: 'text-right' },
+                    { "title": "Sites", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+                    { "title": "Users", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+                ],}
+                );
+            });

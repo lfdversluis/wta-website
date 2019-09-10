@@ -1,0 +1,26 @@
+//// Utility functions
+// Publication page link
+// TODO: uncomment once Level-2 pages are supported
+//- function publicationHref(publication) { return '/publications/' + publication.id + '.html' }
+
+//// Mixins
+mixin publication-list-item(publication)
+    a.publication-anchor(id=publication.id)
+    .row.publication-list-item
+        .main-publication-info.col-xl-10.col-lg-10.col-md-10.col-sm-9.col-8
+            .publication-title= publication.title
+            ul.publication-authors
+                each author, index in publication.authors
+                    - var appendComma = (index !== publication.authors.length - 1);
+                    li= author + (appendComma ? "," : "")
+            div 
+                span Traces used: 
+                ul.publication-traces
+                    each trace, index in publication.traces
+                        - var appendComma = (index !== publication.traces.length - 1);
+                        li #[a(href=trace + '.html') #{trace + (appendComma ? "," : "")}]
+            .text-muted= publication.publication
+
+        .publication-downloads.col-xl-2.col-lg-2.col-md-2.col-sm-3.col-4
+            a.publication-link.col-12.pdf-download(href=publication.pdf, title='Download PDF', target='_blank') #[span.fa.fa-download.mr-1] PDF
+            div.publication-link.col-12.bibtex-copy(title='Copy BibTeX', data-clipboard-text=publication.bibtex, data-toggle="tooltip", data-placement="bottom") #[span.fa.fa-clipboard.mr-1] Cite

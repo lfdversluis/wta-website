@@ -1,0 +1,133 @@
+---
+- id: lversluis-ccgrid18-comparing-autoscalers
+  authors:
+  - Laurens Versluis
+  - Mihai Neacşu
+  - Alexandru Iosup
+  title: >
+    A Trace-Based Performance Study of Autoscaling Workloads of Workflows in Datacenters
+  publication: "International Symposium on Cluster, Cloud and Grid Computing (CCGrid) 2018"
+  releaseYear: 2018
+  bibtex: |
+    @inproceedings{DBLP:conf/ccgrid/VersluisNI18,
+      author    = {Laurens Versluis and
+                   Mihai Neacşu and
+                   Alexandru Iosup},
+      title     = {A Trace-Based Performance Study of Autoscaling Workloads of Workflows in Datacenters},
+      booktitle = {18th {IEEE/ACM} International Symposium on Cluster, Cloud and Grid
+                   Computing, CCGrid 2018, Washington D.C., USA, May 1-4, 2018},
+      pages     = {1--10},
+      year      = {2018},
+      crossref  = {DBLP:conf/ccgrid/2018},
+      url       = {},
+      doi       = {},
+      timestamp = {Thu, 22 May 2018 15:36:29 +0200},
+      biburl    = {http://dblp.uni-trier.de/rec/bib/conf/ccgrid/VersluisNI18},
+      bibsource = {dblp computer science bibliography, http://dblp.org}
+    }
+  pdf: "https://atlarge-research.com/pdfs/lfdversluis-ccgrid-comparing-autoscalers.pdf"
+  traces:
+  - shell
+  - askalon_ee
+  - askalon_ee2
+  
+- id: DBLP:conf/wosp/IlyushkinAHPGEI17
+  authors:
+  - Alexey Ilyushkin
+  - Ahmed Ali El-Din
+  - Nikolas Herbst
+  - Andre Bauer
+  - Allesandro Vittorio 
+  - H.J. Epema, Alexandru Iosup 
+  title: >
+    An Experimental Performance Evaluation of Autoscaling Policies for Complex Workflows
+  publication: "ICPE 2017: 75--86 (Nominated for Best Paper Award)"
+  releaseYear: 2017
+  bibtex: |
+    @inproceedings{DBLP:conf/wosp/IlyushkinAHPGEI17,
+      author    = {Alexey Ilyushkin and
+                   Ahmed Ali{-}Eldin and
+                   Nikolas Herbst and
+                   Alessandro Vittorio Papadopoulos and
+                   Bogdan Ghit and
+                   Dick H. J. Epema and
+                   Alexandru Iosup},
+      title     = {An Experimental Performance Evaluation of Autoscaling Policies for
+                   Complex Workflows},
+      booktitle = {Proceedings of the 8th {ACM/SPEC} on International Conference on Performance
+                   Engineering, {ICPE} 2017, L'Aquila, Italy, April 22-26, 2017},
+      pages     = {75--86},
+      year      = {2017},
+      crossref  = {DBLP:conf/wosp/2017},
+      url       = {http://doi.acm.org/10.1145/3030207.3030214},
+      doi       = {10.1145/3030207.3030214},
+      timestamp = {Sat, 22 Apr 2017 15:59:26 +0200},
+      biburl    = {http://dblp.org/rec/bib/conf/wosp/IlyushkinAHPGEI17},
+      bibsource = {dblp computer science bibliography, http://dblp.org}
+    }
+  pdf: https://atlarge-research.com/pdfs/2017-ilyushkin-autoscaling.pdf
+  traces:
+  - spec_trace-1
+  - spec_trace-2
+
+- id: DBLP:conf/icac/MaISI17
+  authors:
+  - Shenjun Ma
+  - Alexey Ilyushkin
+  - Alexander Stegehuis
+  - Alexandru Iosup
+  title: >
+    Ananke: A Q-Learning-Based Portfolio Scheduler for Complex Industrial Workflows
+  publication: "International Conference on Autonomic Computing (ICAC) 2017"
+  releaseYear: 2017
+  bibtex: |
+    @inproceedings{DBLP:conf/icac/MaISI17,
+      author    = {Shenjun Ma and
+                   Alexey Ilyushkin and
+                   Alexander Stegehuis and
+                   Alexandru Iosup},
+      title     = {Ananke: {A} Q-Learning-Based Portfolio Scheduler for Complex Industrial
+                   Workflows},
+      booktitle = {2017 {IEEE} International Conference on Autonomic Computing, {ICAC}
+                   2017, Columbus, OH, USA, July 17-21, 2017},
+      pages     = {227--232},
+      year      = {2017},
+      crossref  = {DBLP:conf/icac/2017},
+      url       = {https://doi.org/10.1109/ICAC.2017.21},
+      doi       = {10.1109/ICAC.2017.21},
+      timestamp = {Tue, 22 Aug 2017 16:36:23 +0200},
+      biburl    = {https://dblp.org/rec/bib/conf/icac/MaISI17},
+      bibsource = {dblp computer science bibliography, https://dblp.org}
+    }
+  pdf: https://ieeexplore.ieee.org/document/8005354
+  traces:
+  - shell
+  
+- id: gandreadis-reference-architecture-scheduling-tech-report-sc-18
+  authors:
+  - Georgios Andreadis
+  - Laurens Versluis
+  - Fabian S. Mastenbroek
+  - Alexandru Iosup 
+  title: >
+    A Reference Architecture for Datacenter Scheduling
+  publication: "International Conference for High Performance Computing, Networking, Storage and Analysis 2018 (SC18)"
+  releaseYear: 2018
+  bibtex: |
+    @inproceedings{DBLP:conf/SC/Andreadis18,
+      author    = {Georgios Andreadis and
+                   Laurens Versluis and
+                   Fabian Mastenbroek and
+                   Alexandru Iosup},
+      title     = {A Reference Architecture for Datacenter Scheduling: Extended Technical Report},
+      booktitle = {Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis (SC18), Dallas, Texas, USA, November, 2018},
+      year      = {2018},
+      url       = {https://arxiv.org/abs/1808.04224}
+      doi       = {},
+    }
+  pdf: "https://arxiv.org/pdf/1808.04224"
+  traces:
+  - shell
+  - askalon_ee
+  - askalon_ee2
+

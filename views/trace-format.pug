@@ -1,0 +1,44 @@
+extends skeleton
+
+
+block content
+    .container.page-container
+        h1.page-title Trace format
+        p.
+            The WTA trace format conists of 7 objects: Workload, Workflow, Tasks, TaskState, Resource, ResourceState, and DataTransfer.
+            Each of the objects contains their a version field to enable contained updates and a unique set of properties.
+            The format and relations between objects can best be oserved in the figure below.
+            
+        img(src="/images/trace_formalism_wta_3.png")
+        
+        p.
+            The data is offered in parquet format, compressed using the Snappy compression algorithm. Parquet is the de facto columnar standard in Big Data, and is much alike SQL tables and Pandas Dataframes in Python.
+            Parquet reading libraries exist in many popular languages, including Java and Python.
+            
+        h4 Parse scripts
+        p.
+            The WTA offers several parse scripts to parse other trace formats. All parse scripts are available #[a(href="https://github.com/lfdversluis/wta-tools/tree/master/parse_scripts/parquet_parsers") on our GitHub wta-tools repository].
+            The current parse scripts include, but may not be limited to:
+        ol
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/pegasus_db_to_parquet.py") Pegasus trace databases
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/alibaba2018_to_parquet.py") Alibaba's 2018 cluster trace
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/askalon_log_to_parquet.py") Old Askalon Grid workflow format
+            li
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/askalon_json_to_parquet.py") New Askalon Cloud workflow format
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/chronos_gwf_to_parquet.py") Shell's Chronos IoT workflow format
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/google_traces_to_parquet.py") Google's cluster traces (2014)
+            li
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/ilyushkin_icpe_dax_to_parquet.py") SPEC ICPE traces
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/lanl_mustang_to_parquet.py") LANL's Mustang trace log
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/lanl_trinity_to_parquet.py") LANL's Trinity trace log
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/two_sigma_traces_to_parquet.py") Two Sigma workflow traces
+            li 
+                a(href="https://github.com/lfdversluis/wta-tools/blob/master/parse_scripts/parquet_parsers/workflowhub_to_parquet.py") WorkflowHub workflow traces

@@ -1,0 +1,46 @@
+extends skeleton
+
+
+block content
+    .jumbotron.main-jumbotron
+        .jumbotron-img
+        .container.landing-title-container
+            .title-area.col
+                img.col-xl-6.col-lg-7.col-md-8.col-sm-10.col-12(src='images/jumbotron-text.svg')
+
+    .news-section
+        .container
+            .row.justify-content-center
+                .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-16.text-left
+                    h4 News
+                    p 2019-07-03 Google and Alibaba have been uploaded to Zenodo. We also added a page with instructions on how to add a dataset, publication, or talk.
+                    p 2019-06-24 All trace data (bar Google, Alibaba, and Two Sigma) has been uploaded to Zenodo. We are requesting addional space from Zenodo to be able to host the larger datasets.
+                    p 2019-06-19: We released 96 workload of workflow traces. We will soon publish them to Zenodo to be able to cite them, too. (* For Two Sigma, permission to publish is pending.)
+                    p 2018-04-06: Initial version of the Workflow Trace Archive is up and running.
+                    
+    .mission-section
+        .container
+            h2 Our Mission
+            .row.mission-blocks
+                mixin mission-block(icon, text)
+                    div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12
+                        .row.d-flex.justify-content-center.col-12
+                            span.fa.fa-2x(class="fa-" + icon)
+                        .col-12= text
+
+                +mission-block("users", "1. Build a community for sharing valuable traces.")
+                +mission-block("star", "2. Improve academic and industrial work.")
+                +mission-block("book", "3. Improve education through useful & representative traces.")
+
+    .logos-row
+        .container.logos-container
+            mixin logo-row(heading, list)
+                .row.logo-type-row.col-12
+                    .logo-type-heading.col-xl-2.col-lg-2.col-md-2.col-sm-12.col-12.float-left= heading
+                    .logo-list.row.col-xl-10.col-lg-10.col-md-10.col-sm-12.col-12.float-right
+                        each item in list
+                            +partner-item(item)
+
+            +logo-row("Hosts", hosts)
+            +logo-row("Traces by", sponsors)
+            +logo-row("Partners", partners)

@@ -1,0 +1,34 @@
+{
+  "name": "wta-site",
+  "version": "0.1.0",
+  "description": "Website for the Workflow Trace Archive",
+  "main": "gulpfile.js",
+  "author": "Laurens Versluis",
+  "license": "MIT",
+  "dependencies": {
+    "browserify": "^16.2.2",
+    "clipboard": "^2.0.1",
+    "del": "^3.0.0",
+    "eslint": "^4.6.1",
+    "event-stream": "^3.3.4",
+    "gulp": "^3.9.1",
+    "gulp-browserify": "^0.5.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-eslint": "^4.0.0",
+    "gulp-json-schema": "^1.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.2.3",
+    "gulp-sass": "^4.0.1",
+    "gulp-strip-comments": "^2.5.1",
+    "gulp-util": "^3.0.8",
+    "gulp-yaml": "^2.0.1",
+    "pug": "^2.0.0-rc.4",
+    "read-yaml": "^1.1.0",
+    "run-sequence": "^2.2.1",
+    "through2": "^2.0.3"
+  },
+  "devDependencies": {
+    "gulp-webserver": "^0.9.1"
+  }
+}

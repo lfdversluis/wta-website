@@ -1,0 +1,5 @@
+//// Mixins
+// Item displaying a clickable icon for a given partner
+mixin partner-item(partner)
+    a(href=partner.url, title=partner.title).partner-item
+        img(src='/images/partners/' + partner.id + '.png', alt=partner.title)

@@ -1,0 +1,31 @@
+---
+"$schema": http://json-schema.org/draft-04/schema#
+description: A list of talks, given by members of the research group
+type: array
+items:
+  description: A single talk
+  type: object
+  properties:
+    id:
+      description: Talk identifier, must be unique
+      type: string
+    speaker:
+      description: ID of the group member giving the talk, must be an ID occuring in people.yml
+      type: string
+    title:
+      description: Title of the talk
+      type: string
+    year:
+      description: Year when the talk was given
+      type: number
+    venue:
+      description: Location/conference where the talk was given
+      type: string
+    url:
+      description: Link to PDF file containing the slides of that talk
+      type: string
+  required:
+  - id
+  - speaker
+  - title
+  - url

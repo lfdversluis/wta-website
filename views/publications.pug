@@ -1,0 +1,17 @@
+extends skeleton
+
+
+block content
+    .container.page-container
+        h1.page-title #{pageTitle}
+
+        p Below we present publications by year that use one ore more traces of the Workflow Trace Archive.
+
+        each publicationList in publicationsPerYear
+            h3= publicationList.year
+
+            each publication in publicationList.publications
+                +publication-list-item(publication)
+
+append script-load
+    script(src='js/publications.js')

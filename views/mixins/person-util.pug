@@ -1,0 +1,22 @@
+//// Utility functions
+// Personal page link
+- function personHref(person) { return '/' + person.id; }
+
+// Portrait image source URL
+- function personPortraitSmallSrc(person) { return '/images/people/' + person.id + '_small.png'}
+- function personPortraitLargeSrc(person) { return '/images/people/' + person.id + '_large.png'}
+
+// Removes any 'http(s)://' prefixes
+- function removeProtocolLink(url) { return url.replace(/https?:\/\//g, "") }
+
+//// Mixins
+// Full name of a person
+mixin personFullName(person, appendComma)
+    if !person.isExternal
+        = person.firstName + ' ' + person.lastName + (appendComma ? "," : "")
+    else
+        = person.fullName + (appendComma ? "," : "")
+
+// Link to the profile of a person, with his/her full name as link text
+mixin personLink(person, appendComma)
+        +personFullName(person, appendComma)

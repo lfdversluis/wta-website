@@ -1,0 +1,71 @@
+@import base
+
+.pitch-section
+  @extend .content-section
+
+  padding-top: 40px
+  background-color: $brand-primary
+  color: white
+
+  a
+    color: #78d9da
+
+.mission-section
+  @extend .content-section
+
+  background-color: $brand-secondary
+
+.separator-section-band
+  background-color: $brand-primary
+
+  height: 30px
+
+.news-section
+  @extend .content-section
+
+  padding-top: $content-section-padding
+
+  background-color: $brand-primary
+  color: #FFFFFF
+
+
+// Partner section
+.logos-row
+  background-color: $white
+
+  .logos-container
+    padding-top: 40px
+    padding-bottom: 40px
+
+.logo-type-row
+  margin: 20px 0
+
+  .logo-type-heading
+    padding-top: 15px
+
+    font-size: $font-size-h4
+    color: $text-muted
+
+    // Display title right-aligned on larger viewports
+    @media (min-width: $screen-md-min)
+      text-align: right
+
+    // Display title centered on mobile devices
+    @media (max-width: $screen-sm-max)
+      text-align: center
+
+  .logo-list
+    .partner-item
+      height: 35px
+      float: left
+      display: inline
+      margin: 10px
+
+      img
+        max-height: 100%
+        width: auto
+
+
+.mission-blocks
+  font-family: $font-family-sans-serif-secondary
+  font-size: $font-size-h3

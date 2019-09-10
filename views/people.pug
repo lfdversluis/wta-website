@@ -1,0 +1,10 @@
+extends skeleton
+
+
+block content
+    .container.page-container
+        h1.page-title #{pageTitle}
+
+        h2 Current Team Members
+        +people-grid(people)
+

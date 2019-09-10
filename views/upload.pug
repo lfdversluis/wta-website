@@ -1,0 +1,22 @@
+extends skeleton
+
+block content
+   .container.page-container
+      h1 Upload your trace to the Workflow Trace Archive
+      p To upload a trace to the Workflow Trace Archive (WTA), please follow the following steps:
+      ol
+         li Validate your dataset using our #[a(href="https://github.com/atlarge-research/wta-tools/blob/master/parse_scripts/validate_parquet_files.py") validator].
+         li Clone the #[a(href="https://github.com/atlarge-research/wta-tools/") wta-tools repository]
+         li Clone the #[a(href="https://github.com/atlarge-research/wta-site/") website repository].
+         li Run #[a(href="https://github.com/atlarge-research/wta-tools/blob/master/generate_datasets_pages.py") the script to generate website content] with the --append flag using as first argument the location a folder in which your dataset(s) reside(s) and as second argument the location of the website repository.
+         li Test your changes locally using "gulp" and then "gulp serve" (see the README in the wta-site repository).
+         li Pull request the changes.
+      
+      
+      h1 Add a publication or talk to the website
+      p To upload a publication to the website that makes use of one of the traces the WTA offers, please follow the following steps:
+      ol
+         li Clone the #[a(href="https://github.com/atlarge-research/wta-site/") website repository].
+         li Add an entry in #[a(href="https://github.com/lfdversluis/wta-site/blob/master/wta-data/publications.yml") publications.yml] or #[a(href="https://github.com/lfdversluis/wta-site/blob/master/wta-data/talks.yml") talks.yml].
+         li Test your changes locally using "gulp" and then "gulp serve" (see the README in the wta-site repository).
+         li Pull request the changes.

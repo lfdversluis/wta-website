@@ -1,0 +1,52 @@
+---
+"$schema": http://json-schema.org/draft-04/schema#
+description: A list of publications, (co-)authored by members of the research group
+type: array
+items:
+  description: A single publication
+  type: object
+  properties:
+    id:
+      description: Publication identifier, must be unique
+      type: string
+    authors:
+      description: Authors of this publication (order matters)
+      type: array
+      items:
+        title: The full name of the author
+        type: string
+      minItems: 1
+      uniqueItems: true
+    title:
+      description: Title of the publication
+      type: string
+    releaseYear:
+      description: Release year of the publication
+      type: integer
+      minimum: 1950
+    publication:
+      description: Details relating to the publication (e.g. the journal, volume, edition)
+      type: string
+    bibtex:
+      description: BibTeX code for the publication
+      type: string
+    pdf:
+      description: URL to the PDF of the publication (either directly, or linking to a page that offers a download of it)
+      type: string
+  traces:
+      description: The ID of traces used in this publication
+      type: array
+      items:
+        title: A trace id to be associated this publication
+        type: string
+      minItems: 1
+      uniqueItems: true
+  required:
+  - id
+  - authors
+  - title
+  - releaseYear
+  - publication
+  - bibtex
+  - pdf
+  - traces

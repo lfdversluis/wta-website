@@ -1,0 +1,50 @@
+---
+"$schema": http://json-schema.org/draft-04/schema#
+description: A list of people that are (or were once) involved with the WTA
+type: array
+items:
+  description: A member of the WTA
+  type: object
+  additionalProperties: false
+  properties:
+    id:
+      description: 'Identifier for this member (try to adhere to the following format:
+        [first-initial(s)][family-name])'
+      type: string
+    firstName:
+      description: First name
+      type: string
+    lastName:
+      description: Last name
+      type: string
+    email:
+      description: Public email address
+      type: string
+    institution:
+     description: The institution the person belongs to
+     type: string
+    role:
+      description: The roles this person fulfills
+      type: string
+    researchFocus:
+      description: A short phrase describing your core research focus (e.g. Availability
+        on Demand in commercial clouds)
+      type: string
+    cvLink:
+      description: URL to a Curriculum Vitae, if wanted
+      type: string
+    homepage:
+      description: URL to an external homepage, if wanted
+      type: string
+    twitter:
+      description: Twitter handle, if wanted (without the '@')
+      type: string
+    linkedin:
+      description: URL to LinkedIn profile, if wanted
+      type: string
+  required:
+  - id
+  - firstName
+  - lastName
+  - institution
+  - role

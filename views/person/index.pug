@@ -1,0 +1,33 @@
+extends ../skeleton
+
+
+block content
+    - var fullName = person.firstName + ' ' + person.lastName
+
+    .container.page-container
+        .col-xl-3.col-lg-3.col-md-3.col-sm-3.col-12.mt-4
+            img.img-responsive.col-xl-12.col-lg-12.col-md-12.col-sm-12.col-8.col-xl-offset-0.col-lg-offset-0.col-md-offset-0.col-sm-offset-0.col-offset-2.float-left(src= personPortraitLargeSrc(person))
+
+        .col-xl-9.col-lg-9.col-md-9.col-sm-9.col-12.float-right.mt-1
+            h1
+                +personFullName(person)
+
+            p !{person.role.replace(/\//g, '<br>')}
+
+            p
+                strong Research Focus<br>
+                = person.researchFocus
+
+            h3 Contact
+            .contact-links.col-12.mb-5
+                mixin personal-link(title, href, icon, text, shouldDisplay)
+                    if (shouldDisplay)
+                        a.row(href=href, title=title, target='_blank')
+                            .contact-title
+                                span.fa(class="fa-" + icon)
+                                span= removeProtocolLink(text)
+
+                +personal-link('Homepage of ' + fullName, person.homepage, 'globe', person.homepage, person.homepage != undefined)
+                +personal-link('Email of ' + fullName, 'mailto:' + person.email, 'envelope', person.email, person.email != undefined)
+                +personal-link('Twitter of ' + fullName, 'https://twitter.com/@' + person.twitter, 'twitter', "@" + person.twitter, person.twitter != undefined)
+                +personal-link('LinkedIn profile of ' + fullName, person.linkedin, 'linkedin', person.linkedin, person.linkedin != undefined)

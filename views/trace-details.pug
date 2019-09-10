@@ -1,0 +1,309 @@
+extends skeleton
+
+block content
+
+    div#trace-details-div
+        h2 General trace information
+        p.
+            This page contains generic and detailed information about the <strong>#{trace['generic-info']['text']['id']}</strong> trace. High-level (generic) information is provided first followed by more in-depth characterizations.
+            
+        h5 Trace description
+        p= trace['generic-info']['text']['workload_description']
+            h6 Author(s) of this trace:
+            ol
+            each author in trace['generic-info']['text']['authors']
+                li= author
+          
+        h5 Download & citing this trace
+        p The trace can be downloaded and cited through Zenodo in the following format(s):
+        ul 
+            li
+                a(href=trace['doi'] target="_blank") #{trace['doi']} (Parquet format)
+        
+        h4 Generic workload information
+        
+        - function numberWithCommas(x) { return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+
+        div.table-responsive
+            table.tg.table
+                thead
+                      tr
+                        th.tg-0ord Trace id
+                        th.tg-0ord Workflows
+                        th.tg-0ord Tasks
+                        th.tg-0ord Sites
+                        th.tg-0ord Users
+                        th.tg-0ord Resource Seconds
+                        //th.tg-yw4l Scientific work
+                tbody
+                  tr        
+                    td.tg-0ord= trace['generic-info']['text']['id']
+                    td.tg-0ord= numberWithCommas(trace['generic-info']['text']['total-workflows'])
+                    td.tg-0ord= numberWithCommas(trace['generic-info']['text']['total-tasks'])
+                    td.tg-0ord= numberWithCommas(trace['generic-info']['text']['num-sites'])
+                    td.tg-0ord= numberWithCommas(trace['generic-info']['text']['num-users'])
+                    td.tg-0ord= numberWithCommas(trace['generic-info']['text']['num-resource-seconds'])
+                    //td.tg-lqy6= 'todo: include'
+
+        h4 Resource Task Statistics
+
+        div.table-responsive
+            table.tg.table
+              thead
+                tr
+                    th.tg-0ord Min
+                    th.tg-0ord 25th percentile
+                    th.tg-0ord Mean
+                    th.tg-0ord Median
+                    th.tg-0ord 75th percentile
+                    th.tg-0ord Max
+                    th.tg-0ord Standard deviation
+                    th.tg-yw4l Coefficient of variation
+
+              tbody
+                tr
+                    td.tg-0ord= trace['generic-resource']['text']['min-resource-task'].toFixed(2)
+                    td.tg-0ord= trace['generic-resource']['text']['25th-percentile-resource-task'].toFixed(2)
+                    td.tg-0ord= trace['generic-resource']['text']['mean-resource-task'].toFixed(2)
+                    td.tg-0ord= trace['generic-resource']['text']['median-resource-task'].toFixed(2)
+                    td.tg-0ord= trace['generic-resource']['text']['75th-percentile-resource-task'].toFixed(2)
+                    td.tg-0ord= trace['generic-resource']['text']['max-resource-task'].toFixed(2)
+                    td.tg-0ord= trace['generic-resource']['text']['std-resource-task'].toFixed(2)
+                    td.tg-lqy6= trace['generic-resource']['text']['cov-resource-task'].toFixed(2)
+
+        h4 Task Memory Usage
+
+        if trace['generic-memory']['text']['mean-memory'] >= 0
+            div.table-responsive
+                table.tg.table
+                    thead
+                      tr
+                        th.tg-0ord Min
+                        th.tg-0ord 25th percentile
+                        th.tg-0ord Mean
+                        th.tg-0ord Median
+                        th.tg-0ord 75th percentile
+                        th.tg-0ord Max
+                        th.tg-0ord Standard deviation
+                        th.tg-yw4l Coefficient of variation
+                    tbody
+                        tr
+                            td.tg-0ord= trace['generic-memory']['text']['min-memory'].toFixed(2)
+                            td.tg-0ord= trace['generic-memory']['text']['25th-percentile-memory'].toFixed(2)
+                            td.tg-0ord= trace['generic-memory']['text']['mean-memory'].toFixed(2)
+                            td.tg-0ord= trace['generic-memory']['text']['median-memory'].toFixed(2)
+                            td.tg-0ord= trace['generic-memory']['text']['75th-percentile-memory'].toFixed(2)
+                            td.tg-0ord= trace['generic-memory']['text']['max-memory'].toFixed(2)
+                            td.tg-0ord= trace['generic-memory']['text']['std-memory'].toFixed(2)
+                            td.tg-lqy6= trace['generic-memory']['text']['cov-memory'].toFixed(2)
+        else
+            p This trace does not contain task memory information.
+            
+        h4 Task Disk Usage
+
+        if trace['generic-disk']['text']['mean-disk'] >= 0
+            div.table-responsive
+                table.tg.table
+                    thead
+                      tr
+                        th.tg-0ord Min
+                        th.tg-0ord 25th percentile
+                        th.tg-0ord Mean
+                        th.tg-0ord Median
+                        th.tg-0ord 75th percentile
+                        th.tg-0ord Max
+                        th.tg-0ord Standard deviation
+                        th.tg-yw4l Coefficient of variation
+                    tbody
+                        tr
+                            td.tg-0ord= trace['generic-disk']['text']['min-disk-space-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-disk']['text']['25th-percentile-disk-space-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-disk']['text']['mean-disk-space-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-disk']['text']['median-disk-space-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-disk']['text']['75th-percentile-disk-space-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-disk']['text']['max-disk-space-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-disk']['text']['std-disk-space-usage'].toFixed(2)
+                            td.tg-lqy6= trace['generic-disk']['text']['cov-disk-space-usage'].toFixed(2)
+        else
+            p This trace does not contain disk usage information.
+            
+        h4 Task Network Usage
+
+        if trace['generic-network']['text']['mean-disk'] >= 0
+            div.table-responsive
+                table.tg.table
+                    thead
+                      tr
+                        th.tg-0ord Min
+                        th.tg-0ord 25th percentile
+                        th.tg-0ord Mean
+                        th.tg-0ord Median
+                        th.tg-0ord 75th percentile
+                        th.tg-0ord Max
+                        th.tg-0ord Standard deviation
+                        th.tg-yw4l Coefficient of variation
+                    tbody
+                        tr
+                            td.tg-0ord= trace['generic-network']['text']['min-network-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-network']['text']['25th-percentile-network-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-network']['text']['mean-network-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-network']['text']['median-network-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-network']['text']['75th-percentile-network-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-network']['text']['max-network-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-network']['text']['std-network-usage'].toFixed(2)
+                            td.tg-lqy6= trace['generic-network']['text']['cov-network-usage'].toFixed(2)
+        else
+            p This trace does not contain network usage information.
+            
+        h4 Task Energy Usage
+
+        if trace['generic-energy']['text']['mean-disk'] >= 0
+            div.table-responsive
+                table.tg.table
+                    thead
+                      tr
+                        th.tg-0ord Min
+                        th.tg-0ord 25th percentile
+                        th.tg-0ord Mean
+                        th.tg-0ord Median
+                        th.tg-0ord 75th percentile
+                        th.tg-0ord Max
+                        th.tg-0ord Standard deviation
+                        th.tg-yw4l Coefficient of variation
+                    tbody
+                        tr
+                            td.tg-0ord= trace['generic-energy']['text']['min-energy'].toFixed(2)
+                            td.tg-0ord= trace['generic-energy']['text']['25th-percentile-energy'].toFixed(2)
+                            td.tg-0ord= trace['generic-energy']['text']['mean-energy-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-energy']['text']['median-energy-usage'].toFixed(2)
+                            td.tg-0ord= trace['generic-energy']['text']['75th-percentile-energy'].toFixed(2)
+                            td.tg-0ord= trace['generic-energy']['text']['max-energy'].toFixed(2)
+                            td.tg-0ord= trace['generic-energy']['text']['std-energy'].toFixed(2)
+                            td.tg-lqy6= trace['generic-energy']['text']['cov-energy'].toFixed(2)
+        else
+            p This trace does not contain energy information.
+
+        h2 Detailed job (workflow) statistics
+        
+        p.
+            This section contains information regarding job-level (workflow) statistics. This granularity allows for practitioners to estimate the load of the workload
+            on the system, investigate the characteristics of the workflows, and related metrics.
+
+        div.container-fluid
+            div.row
+                div.col-xs-12.col-md-6
+                    h4 Job Arrival Graph
+                    p.
+                        The Job arrival graph depicts how many jobs (workflows) arrive over time.
+                        The figure below consists of four sub-plots, depicting four different granularities for the horizontal axis: seconds, minutes, hours, and days. 
+                        The vertical axis depicts the amount of jobs arriving.
+
+                    img(src='/images/graphs/job_arrival_' + trace['generic-info']['text']['id'] + '.png'  alt='Job arrival graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+                div.col-xs-12.col-md-6 
+                    h4 Job Arrival CDF
+                    p.
+                        The Job arrival CDF depicts how many jobs (workflows) arrive at a certain moment. We use the arrival time of the first task of a workflow as the arrival of the workflow itself.
+                        The figure below depicts the CDF. The horizontal axis depicts the arrival time in
+                        seconds based on the arrival times in the trace. The vertical axis depicts the probability.
+
+                    img(src='/images/graphs/job_arrival_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Job arrival CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+        h4 Job Critical Path Task Count CDF
+        p.
+            The critical path of a workflow is the longest path from any start node to any end node, defining the minimum time required to execute the workflow.
+            The figure below depicts the CDF of the task count of the critical path per workflow on the horizontal axis.
+            The vertical axis depicts the probability.
+            
+        img(src='/images/graphs/job_cp_task_count_' + trace['generic-info']['text']['id'] + '.png'  alt='Job critical path task count graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+        h4 Job Runtime CDF
+        p.
+            The job runtime runtime depicts the job's actual execution time in the system.
+            Since shortage of resources may prevent tasks from running, the execution time could be (significantly) higher than the critical path.
+            The figure below depicts on the horizontal axis the job runtime in seconds.
+            The vertical axis depicts the occurrences.
+        
+        img(src='/images/graphs/job_runtime_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Job runtime CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+        
+        //h4 Job Wait time CDF
+        //p.
+            The job wait time depicts the time between a job's submission time and the start of the execution of the first task.
+            Since shortage of resources may prevent tasks from running, tasks may need to wait in the queue.
+            The figure below depicts on the horizontal axis the job wait time in seconds.
+            The vertical axis depicts the occurrences.
+        
+        //img(src='/images/graphs/job_wait_time_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Job wait time CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+        h2 Detailed task information
+        
+        p.
+            This section contains information related to the tasks in the workload. This granularity of information allows practitioners to gain intrinsic metrics related to the workflows in the workload, task properties (i.e., resource consumption), and the workload overall.
+        
+        div.container-fluid
+            div.row
+                div.col-xs-12.col-md-6
+                    h4 Task arrival graph
+                    p.
+                        The task arrival graph depicts how many tasks arrive over time.
+                        The figure below consisting of four sub-plots.
+                        The subplots depict four different granularities for the horizontal axis: seconds, minutes, hours, and days. 
+                         The vertical axis depicts the amount of tasks arriving.
+
+                    img(src='/images/graphs/task_arrival_' + trace['generic-info']['text']['id'] + '.png'  alt='Task arrival graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+                div.col-xs-12.col-md-6
+                    h4 Task Arrival CDF
+                    p.
+                        In a workload of workflows, jobs arrive over time.
+                        At the same time, tasks of a job may not arrive at the same time, leading to possible bursty patterns.
+                        The figure below depicts on the horizontal axis the task arrival times.
+                        The vertical axis depicts the occurrences.
+
+                    img(src='/images/graphs/task_arrival_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Task arrival CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+        h4 Task Completion Graph
+        p.
+            The figure below depicts the amount of completed task over time using four different granularities of time: seconds, minutes, hours, and days.
+            The horizontal axis depicts the time into the experiment.
+            The vertical axis depicts the cumulative amount of completed tasks over time.
+            
+        img(src='/images/graphs/task_completion_graph_' + trace['generic-info']['text']['id'] + '.png'  alt='Task completion graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+        
+        div.container-fluid
+            div.row
+                div.col-xs-12.col-md-6
+                    h4 Task runtime CDF
+                    p.
+                        The figure below shows the CDF of task runtimes consumption.
+                        The horizontal axis depicts the task runtime in seconds.
+                        The vertical axis depicts the occurrences.
+
+                    img(src='/images/graphs/task_runtime_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Task runtime CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+                div.col-xs-12.col-md-6
+                    h4 Task Resource Time CDF
+                    p.
+                        We define resource time of a task as the amount of resourcees the task requires multiplied by its runtime.
+                        The figure below shows the CDF of task resource time.
+                        The horizontal axis depicts the task resource time in seconds.
+                        The vertical axis depicts the cumulative amount of completed tasks over time.
+
+                    img(src='/images/graphs/task_resource_time_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='task resource time CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+
+
+        h4 Task Wait Time CDF
+        p.
+            The figure below shows the CDF of task wait times.
+            The horizontal axis depicts the task runtime in seconds.
+            The vertical axis depicts the occurrences.
+    
+        img(src='/images/graphs/task_wait_time_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Task wait time CDF graph for the ' + trace['generic-info']['text']['id'] + ' trace.')
+    
+        h4 Task Memory consumption
+        p.
+            The figure below shows the CDF of task memory consumption.
+            The horizontal axis depicts the task CPU time in seconds.
+            The vertical axis depicts the cumulative amount of completed tasks over time.
+            
+        img(src='/images/graphs/task_memory_consumption_cdf_' + trace['generic-info']['text']['id'] + '.png'  alt='Task memory consumption graph for the ' + trace['generic-info']['text']['id'] + ' trace.')

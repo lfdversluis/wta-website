@@ -1,0 +1,37 @@
+@import base
+
+// Components
+@import navbar
+@import footer
+@import jumbotron
+@import publication-list
+@import people-grid
+@import person
+@import index
+@import content-section
+
+// Compensate for space taken up by fixed navbar
+body
+  padding-top: $navbar-height
+
+// Give page titles a proper margin
+.page-title
+  margin-top: 40px
+
+.page-container
+  padding-bottom: 100px
+
+a:hover
+  text-decoration: none
+
+#trace-details-div
+  padding: 20px
+
+#trace-details-div img
+  width: 100%
+  max-width: 500px
+
+#side-comparison
+  width: 100%
+  padding-left: 10px
+  padding-right: 10px

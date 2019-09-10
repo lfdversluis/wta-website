@@ -1,0 +1,13 @@
+//// Mixins
+// Grid of persons
+mixin people-grid(people)
+    .row
+        each person in people
+            - var personalDetails = person.firstName !== undefined ? person : person.details;
+            if personalDetails !== undefined
+                a.col-xl-2.col-lg-3.col-md-3.col-sm-4.col-6.people-grid-item(href=personHref(person))
+                    img.col-12(src=personPortraitSmallSrc(person), alt=personalDetails.firstName + ' ' + personalDetails.lastName)
+                    .col-12.text-center
+                        .name
+                            +personFullName(personalDetails).homepage-link
+                        .small.text-muted= person.role.split('/')[0]
