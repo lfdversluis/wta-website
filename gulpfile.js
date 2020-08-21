@@ -15,7 +15,6 @@ const eslint = require('gulp-eslint');
 const browserify = require('gulp-browserify');
 const del = require('del');
 const webServer = require('gulp-webserver');
-const debug = require('gulp-debug');
 
 
 /**
@@ -134,7 +133,6 @@ const imagesFilePaths = imagesRootDir.map(img => img + '**/*.{png,jpg,svg}');
 function images(done) {
     imagesFilePaths.map(function(element){
         return src(element)
-            .pipe(debug())
             .pipe(dest(imagesDistDir))
             .pipe(notify({message: 'Images task complete', onLast: true}));
     });
