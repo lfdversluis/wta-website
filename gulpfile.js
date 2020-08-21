@@ -110,11 +110,11 @@ const viewsDistDir = STATIC_DIST_ROOT;
 const viewController = require('./app/view-controller');
 
 function views(done) { 
-	validate();
+    validate();
     
-	const tasks = viewController.generateViewTasks(gulp, viewsRootDir, viewsDistDir);
-	eventStream.merge.apply(null, tasks)
-		.pipe(notify({message: 'Views task complete', onLast: true}));
+    const tasks = viewController.generateViewTasks(gulp, viewsRootDir, viewsDistDir);
+    eventStream.merge.apply(null, tasks)
+        .pipe(notify({message: 'Views task complete', onLast: true}));
 
     done();
 }
