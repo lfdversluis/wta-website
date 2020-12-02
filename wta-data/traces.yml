@@ -10284,3 +10284,109 @@
   task-waittime-cdf:
     graph: task_wait_time_cdf_askalon-new_ee52.png
     text: null
+- doi: https://doi.org/10.5281/zenodo.4300238
+  generic-disk:
+    graph: null
+    text:
+      25th-percentile-disk-space-usage: -1
+      75th-percentile-disk-space-usage: -1
+      cov-disk-space-usage: -0.0
+      max-disk-space-usage: -1.0
+      mean-disk-space-usage: -1.0
+      median-disk-space-usage: -1
+      min-disk-space-usage: -1.0
+      std-disk-space-usage: 0.0
+  generic-energy:
+    graph: null
+    text:
+      25th-percentile-energy: -1
+      75th-percentile-energy: -1
+      cov-energy: -0.0
+      max-energy: -1
+      mean-energy: -1.0
+      median-energy: -1
+      min-energy: -1
+      std-energy: 0.0
+  generic-info:
+    graph: null
+    text:
+      authors:
+      - Jaro Bosch
+      - Laurens Versluis
+      id: Galaxy
+      num-resource-seconds: 4316195.0
+      num-cpus: 5395.0
+      num-sites: 804
+      num-users: 1
+      total-tasks: 5395
+      total-workflows: 804
+      workload_description: Traces from different biomedical research workflows, executed
+        on the public Galaxy server in Europe.
+      workload_domain: Biomedical
+  generic-memory:
+    graph: null
+    text:
+      25th-percentile-memory: 132907008.0
+      75th-percentile-memory: 2133694464.0
+      cov-memory: 3.3245776970936682
+      max-memory: 643418296320.0
+      mean-memory: 8539283695.913995
+      median-memory: 294891520.0
+      min-memory: 100524032.0
+      std-memory: 28389512124.591255
+  generic-network:
+    graph: null
+    text:
+      25th-percentile-network-usage: -1
+      75th-percentile-network-usage: -1
+      cov-network-usage: -0.0
+      max-network-usage: -1
+      mean-network-usage: -1.0
+      median-network-usage: -1
+      min-network-usage: -1
+      std-network-usage: 0.0
+  generic-resource:
+    graph: null
+    text:
+      25th-percentile-resource-task: 1.0
+      75th-percentile-resource-task: 1.0
+      cov-resource-task: 0.0
+      max-resource-task: 1.0
+      mean-resource-task: 1.0
+      median-resource-task: 1.0
+      min-resource-task: 1.0
+      std-resource-task: 0.0          
+  id: Galaxy
+  job-arrival:
+    graph: job_arrival_Galaxy.png
+    text: null
+  job-arrival-cdf:
+    graph: job_arrival_cdf_Galaxy.png
+    text: null
+  job-cp-count-cdf:
+    graph: job_cp_task_count_Galaxy.png
+    text: null
+  job-runtime-cdf:
+    graph: job_runtime_cdf_Galaxy.png
+    text: null
+  task-arrival:
+    graph: task_arrival_Galaxy.png
+    text: null
+  task-arrival-cdf:
+    graph: task_arrival_cdf_Galaxy.png
+    text: null
+  task-completion:
+    graph: task_completion_graph_Galaxy.png
+    text: null
+  task-cputime-cdf:
+    graph: task_resource_time_cdf_Galaxy.png
+    text: null
+  task-memory-cdf:
+    graph: task_memory_consumption_cdf_Galaxy.png
+    text: null
+  task-runtime-cdf:
+    graph: task_runtime_cdf_Galaxy.png
+    text: null
+  task-waittime-cdf:
+    graph: task_wait_time_cdf_Galaxy.png
+    text: null
