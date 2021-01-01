@@ -5,6 +5,47 @@ block content
     .container-fluid.page-container
         h1.page-title #{pageTitle}
         
+        span Filter on trace properties.
+        <div class="container" id="trace-selection">
+            <div class="row justify-content-md-center">
+                <h3> Filter on trace properties:</h3>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-3">
+                    <img src="/images/ram.png" alt="Memory" />
+                    <input type="checkbox" class="form-check-input" id="memory-check">
+                    <label class="form-check-label" for="memory-check">Memory Information</label>
+                </div>
+                <div class="col col-lg-3">
+                    <img src="/images/hdd.png" class="img-fluid" alt="Disk"/>
+                    <input type="checkbox" class="form-check-input" id="disk-check">
+                    <label class="form-check-label" for="disk-check">Disk Usage</label>
+                </div>
+                <div class="col col-lg-3">
+                    <img src="/images/transfer.png" class="img-fluid" alt="Disk I/O"/>
+                    <input type="checkbox" class="form-check-input" id="diskio-check">
+                    <label class="form-check-label" for="diskio-check">Disk IO</label>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-3">
+                    <img src="/images/network.png" class="img-fluid" alt="Network"/>
+                    <input type="checkbox" class="form-check-input" id="networkio-check">
+                    <label class="form-check-label" for="networkio-check">Network IO</label>
+                </div>
+                <div class="col col-lg-3">
+                    <img src="/images/group.png" class="img-fluid" alt="Group"/>
+                    <input type="checkbox" class="form-check-input" id="users-check">
+                    <label class="form-check-label" for="users-check">Users</label>
+                </div>
+                <div class="col col-lg-3">
+                    <img src="/images/plug.png" class="img-fluid" alt="Energy"/>
+                    <input type="checkbox" class="form-check-input" id="energy-check">
+                    <label class="form-check-label" for="energy-check">Energy Consumption</label>
+                </div>
+            </div>
+        </div>
+        
         div.table-responsive
             table(id="traces" class="table table-striped")
                 thead
@@ -28,6 +69,7 @@ block content
         
         script.
             $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip(); 
                 $.noConflict();
                 $('#traces').DataTable({
                 "columns": [

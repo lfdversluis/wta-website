@@ -35,13 +35,12 @@ const stylesDistDir = STATIC_DIST_ROOT + 'css/';
 const styleFileNames = ['main'];
 const styleFilePaths = styleFileNames.map(fileName => stylesRootDir + fileName + '.sass');
 
-function styles(done) {
-    src(styleFilePaths)
+function styles() {
+    return src(styleFilePaths)
         .pipe(sass().on('error', sass.logError))
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(dest(stylesDistDir))
         .pipe(notify({message: 'Styles task complete', onLast: true}));
-    done();
 }
 
 
@@ -53,7 +52,8 @@ function styles(done) {
 function eslinting() {
     return src([scriptsRootDir + '**/*.js', './app/**/*.js', './gulpfile.js'])
         .pipe(eslint())
-        .pipe(eslint.format());
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 }
 
 
@@ -71,14 +71,13 @@ const scriptsFilePaths = scriptsFileNames.map(fileName => scriptsRootDir + fileN
 // Add the bootstrap JS file (not included explicitly by any of the JS files)
 scriptsFilePaths.push('./node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js');
 
-function scripts(done) {
-    src(scriptsFilePaths, { allowEmpty: true })
+function scripts() {
+    return src(scriptsFilePaths, { allowEmpty: true })
         .pipe(browserify({
             insertGlobals: true
         }))
         .pipe(dest(scriptsDistDir))
         .pipe(notify({message: 'Scripts task complete', onLast: true}));
-    done();
 }
 
 /**
@@ -93,7 +92,7 @@ const yamlValidator = require('./app/yaml-validator');
 function validate() {
     const tasks = yamlValidator.generateValidationTasks(gulp, schemaRootDir, DATA_ROOT);
 
-    eventStream.merge.apply(null, tasks)
+    return eventStream.merge.apply(null, tasks)
         .pipe(notify({message: 'YAML Validation task complete', onLast: true}));
 }
 
@@ -109,14 +108,12 @@ const viewsDistDir = STATIC_DIST_ROOT;
 
 const viewController = require('./app/view-controller');
 
-function views(done) { 
+function views() { 
     validate();
     
     const tasks = viewController.generateViewTasks(gulp, viewsRootDir, viewsDistDir);
-    eventStream.merge.apply(null, tasks)
+    return eventStream.merge.apply(null, tasks)
         .pipe(notify({message: 'Views task complete', onLast: true}));
-
-    done();
 }
 
 
@@ -130,13 +127,10 @@ const imagesDistDir = STATIC_DIST_ROOT + 'images/';
 
 const imagesFilePaths = imagesRootDir.map(img => img + '**/*.{png,jpg,svg}');
 
-function images(done) {
-    imagesFilePaths.map(function(element){
-        return src(element)
-            .pipe(dest(imagesDistDir))
-            .pipe(notify({message: 'Images task complete', onLast: true}));
-    });
-    done();
+function images() {
+    return src(imagesFilePaths)
+        .pipe(dest(imagesDistDir))
+        .pipe(notify({message: 'Images task complete', onLast: true}));
 }
 
 
@@ -150,11 +144,10 @@ const pdfsDistDir = STATIC_DIST_ROOT + 'pdfs/';
 
 const pdfsFilePaths = pdfsRootDir + '**/*.pdf';
 
-function pdfs(done) {
-    src(pdfsFilePaths)
+function pdfs() {
+    return src(pdfsFilePaths)
         .pipe(dest(pdfsDistDir))
         .pipe(notify({message: 'PDFs task complete', onLast: true}));
-    done();
 }
 
 /**
@@ -167,11 +160,10 @@ const tracesDistDir = STATIC_DIST_ROOT + 'traces/';
 
 const tracesFilePaths = tracesRootDir + '*.zip';
 
-function traces(done) {
-    src(tracesFilePaths, { buffer: false })
+function traces() {
+    return src(tracesFilePaths, { buffer: false })
         .pipe(dest(tracesDistDir))
         .pipe(notify({message: 'Traces task complete', onLast: true}));
-    done();
 }
 
 
@@ -183,11 +175,10 @@ function traces(done) {
 const faviconRootDir = STATIC_SOURCE_ROOT;
 const faviconDistDir = STATIC_DIST_ROOT;
 
-function favicon(done) {
-    src(faviconRootDir + 'favicon.ico')
+function favicon() {
+    return src(faviconRootDir + 'favicon.ico')
         .pipe(dest(faviconDistDir))
         .pipe(notify({message: 'Favicon task complete', onLast: true}));
-    done();
 }
 
 /**
@@ -238,12 +229,13 @@ exports.default = series(
  * files when you've changed them.
  */
 function watching() {
-    watch(stylesRootDir + '**/*.sass').on('change', styles());
-    watch(scriptsRootDir + '**/*.js').on('change', scripts());
-    watch(DATA_ROOT + '**/*.yml').on('change', views());
-    watch(viewsRootDir + '**/*.pug').on('change', views());
-    watch(imagesRootDir + '**/*.{png,jpg,svg}').on('change', images());
-    watch(pdfsRootDir + '**/*.pdf').on('change', pdfs());    
+    watch(stylesRootDir + '**/*.sass').on('change', styles);
+    watch(scriptsRootDir + '**/*.js').on('change', scripts);
+    watch(DATA_ROOT + '**/*.yml').on('change', views);
+    watch(viewsRootDir + '**/*.pug').on('change', views);
+    watch(imagesRootDir + '**/*.{png,jpg,svg}').on('change', images);
+    watch(pdfsRootDir + '**/*.pdf').on('change', pdfs);    
 }
 exports.watch = watching;
 exports.serve = webserver;
+exports.clean = clean;

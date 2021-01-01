@@ -85,6 +85,12 @@
   types:
   - sponsor
   url: 'https://www.twosigma.com/'
+
+- id: galaxyeurope
+  title: Galaxy Europe
+  types:
+  - sponsor
+  url: 'https://usegalaxy.eu/'
   
 # Partners
   
