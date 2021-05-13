@@ -85,7 +85,6 @@ block content
 						var value = data[col_index];
 						// Check each filter that was enabled for this data item
 						if ($('#' + identifier).prop("checked") == true) {
-							console.log(data);
 							if (value == "" || parseFloat(value) < 0) {
 								return false;  // Does not match the filter, exclude it
 							}
