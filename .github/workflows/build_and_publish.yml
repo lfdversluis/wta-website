@@ -39,7 +39,7 @@ jobs:
           WTA_SSH_PASSWORD: ${{ secrets.WTA_SSH_PASSWORD }}
           WTA_SERVER: ${{ secrets.WTA_SERVER }}
           WTA_SSH_USER: ${{ secrets.WTA_SSH_USER }}
-        run: rsync -r --rsh="/usr/bin/sshpass -p $WTA_SSH_PASSWORD ssh -o StrictHostKeyChecking=no" public/dist/ $WTA_SSH_USER@$WTA_SERVER:/home/$WTA_SSH_USER/$WTA_SERVER
+        run: rsync -r --rsh="/usr/bin/sshpass -p $WTA_SSH_PASSWORD ssh -o StrictHostKeyChecking=no" public/dist/ $WTA_SSH_USER@$WTA_SERVER:/home/$WTA_SSH_USER/wta.atlarge-research.com
 
   clean:
     runs-on: ubuntu-latest
