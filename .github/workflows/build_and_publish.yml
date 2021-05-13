@@ -40,7 +40,7 @@ jobs:
           WTA_SERVER: ${{ secrets.WTA_SERVER }}
           WTA_SSH_USER: ${{ secrets.WTA_SSH_USER }}
           WTA_WEBSITE_ROOT: ${{ secrets.WTA_WEBSITE_ROOT }}
-        run: rsync -r --rsh="/usr/bin/sshpass -p ${WTA_SSH_PASSWORD} ssh -o StrictHostKeyChecking=no" public/dist/ $WTA_SSH_USER@$WTA_SERVER:/home/$WTA_SSH_USER/$WTA_WEBSITE_ROOT
+        run: rsync -r --rsh='/usr/bin/sshpass -p "${WTA_SSH_PASSWORD}" ssh -o StrictHostKeyChecking=no' public/dist/ $WTA_SSH_USER@$WTA_SERVER:/home/$WTA_SSH_USER/$WTA_WEBSITE_ROOT
 
   clean:
     runs-on: ubuntu-latest
