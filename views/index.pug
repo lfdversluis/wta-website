@@ -2,44 +2,44 @@ extends skeleton
 
 
 block content
-    .jumbotron.main-jumbotron
-        .jumbotron-img
-        .container.landing-title-container
-            .title-area.col
-                img.col-xl-6.col-lg-7.col-md-8.col-sm-10.col-12(src='images/jumbotron-text.svg')
+	.jumbotron.main-jumbotron
+		.jumbotron-img
+		.container.landing-title-container
+			.title-area.col
+				img.col-xl-6.col-lg-7.col-md-8.col-sm-10.col-12(src='images/jumbotron-text.svg')
 
-    .news-section
-        .container
-            .row.justify-content-center
-                .col-xl-12.col-lg-12.col-md-12.col-sm-12.col-16.text-left
-                    h4 Recent News
+	.news-section
+		.container
+			.row.justify-content-center
+				.col-xl-12.col-lg-12.col-md-12.col-sm-12.col-16.text-left
+					h4 Recent News
 					p 2021-05-13 The search functionality is now active. Users can now filter traces on the presence of 6 generic properties.
-                    p 2021-01-01 We start of the year with a (for now visual) update to the archive. In the trace overview you can now filter on high-level trace properties. We are working to enable this functionality as soon as possible.
-                    p 2020-12-02 Added a workflow trace from Galaxy Europe. Thank you, Jaro Bosch for your contribution.
-                    
-    .mission-section
-        .container
-            h2 Our Mission
-            .row.mission-blocks
-                mixin mission-block(icon, text)
-                    div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12
-                        .row.d-flex.justify-content-center.col-12
-                            span.fa.fa-2x(class="fa-" + icon)
-                        .col-12= text
+					p 2021-01-01 We start of the year with a (for now visual) update to the archive. In the trace overview you can now filter on high-level trace properties. We are working to enable this functionality as soon as possible.
+					p 2020-12-02 Added a workflow trace from Galaxy Europe. Thank you, Jaro Bosch for your contribution.
+					
+	.mission-section
+		.container
+			h2 Our Mission
+			.row.mission-blocks
+				mixin mission-block(icon, text)
+					div.col-xl-4.col-lg-4.col-md-4.col-sm-6.col-12
+						.row.d-flex.justify-content-center.col-12
+							span.fa.fa-2x(class="fa-" + icon)
+						.col-12= text
 
-                +mission-block("users", "1. Build a community for sharing valuable traces.")
-                +mission-block("star", "2. Improve academic and industrial work.")
-                +mission-block("book", "3. Improve education through useful & representative traces.")
+				+mission-block("users", "1. Build a community for sharing valuable traces.")
+				+mission-block("star", "2. Improve academic and industrial work.")
+				+mission-block("book", "3. Improve education through useful & representative traces.")
 
-    .logos-row
-        .container.logos-container
-            mixin logo-row(heading, list)
-                .row.logo-type-row.col-12
-                    .logo-type-heading.col-xl-2.col-lg-2.col-md-2.col-sm-12.col-12.float-left= heading
-                    .logo-list.row.col-xl-10.col-lg-10.col-md-10.col-sm-12.col-12.float-right
-                        each item in list
-                            +partner-item(item)
+	.logos-row
+		.container.logos-container
+			mixin logo-row(heading, list)
+				.row.logo-type-row.col-12
+					.logo-type-heading.col-xl-2.col-lg-2.col-md-2.col-sm-12.col-12.float-left= heading
+					.logo-list.row.col-xl-10.col-lg-10.col-md-10.col-sm-12.col-12.float-right
+						each item in list
+							+partner-item(item)
 
-            +logo-row("Hosts", hosts)
-            +logo-row("Traces by", sponsors)
-            +logo-row("Partners", partners)
+			+logo-row("Hosts", hosts)
+			+logo-row("Traces by", sponsors)
+			+logo-row("Partners", partners)
