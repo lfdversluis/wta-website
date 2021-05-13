@@ -1,12 +1,18 @@
 mixin trace-table-row(trace)
-    tr
-        - var trace_id = trace['generic-info']['text']['id']
-        td(scope='col')
-            a(href=trace_id + '.html') #{trace_id}
-        td(scope='col')= trace['generic-info']['text']['workload_domain']
-        td(scope='col')= trace['generic-info']['text']['total-workflows']
-        td(scope='col')= trace['generic-info']['text']['total-tasks']
-        td(scope='col')= trace['generic-info']['text']['num-cpus']
-        td(scope='col')= trace['generic-info']['text']['num-sites']
-        td(scope='col')= trace['generic-info']['text']['num-users']
-        //td(scope='col')= TBD
+	tr
+		- var trace_id = trace['generic-info']['text']['id']
+		td(scope='col')
+			a(href=trace_id + '.html') #{trace_id}
+		td(scope='col')= trace['generic-info']['text']['workload_domain']
+		td(scope='col')= trace['generic-info']['text']['total-workflows']
+		td(scope='col')= trace['generic-info']['text']['total-tasks']
+		td(scope='col')= trace['generic-info']['text']['num-cpus']
+		td(scope='col')= trace['generic-info']['text']['num-sites']
+		td(scope='col')= trace['generic-info']['text']['num-users']
+		td(scope='col')= trace['generic-memory']['text']['max-memory']
+		td(scope='col')= trace['generic-disk']['text']['max-disk-space-usage']
+		td(scope='col')= trace['generic-disk']['text']['max-disk-space-usage']
+		td(scope='col')= trace['generic-network']['text']['max-network-usage']
+		td(scope='col')= trace['generic-info']['text']['num-users']
+		td(scope='col')= trace['generic-energy']['text']['max-energy']
+		//td(scope='col')= TBD

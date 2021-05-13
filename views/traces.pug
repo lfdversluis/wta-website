@@ -2,84 +2,121 @@ extends skeleton
 
 
 block content
-    .container-fluid.page-container
-        h1.page-title #{pageTitle}
-        
-        span Filter on trace properties.
-        <div class="container" id="trace-selection">
-            <div class="row justify-content-md-center">
-                <h3> Filter on trace properties:</h3>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-3">
-                    <img src="/images/ram.png" alt="Memory" />
-                    <input type="checkbox" class="form-check-input" id="memory-check">
-                    <label class="form-check-label" for="memory-check">Memory Information</label>
-                </div>
-                <div class="col col-lg-3">
-                    <img src="/images/hdd.png" class="img-fluid" alt="Disk"/>
-                    <input type="checkbox" class="form-check-input" id="disk-check">
-                    <label class="form-check-label" for="disk-check">Disk Usage</label>
-                </div>
-                <div class="col col-lg-3">
-                    <img src="/images/transfer.png" class="img-fluid" alt="Disk I/O"/>
-                    <input type="checkbox" class="form-check-input" id="diskio-check">
-                    <label class="form-check-label" for="diskio-check">Disk IO</label>
-                </div>
-            </div>
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-3">
-                    <img src="/images/network.png" class="img-fluid" alt="Network"/>
-                    <input type="checkbox" class="form-check-input" id="networkio-check">
-                    <label class="form-check-label" for="networkio-check">Network IO</label>
-                </div>
-                <div class="col col-lg-3">
-                    <img src="/images/group.png" class="img-fluid" alt="Group"/>
-                    <input type="checkbox" class="form-check-input" id="users-check">
-                    <label class="form-check-label" for="users-check">Users</label>
-                </div>
-                <div class="col col-lg-3">
-                    <img src="/images/plug.png" class="img-fluid" alt="Energy"/>
-                    <input type="checkbox" class="form-check-input" id="energy-check">
-                    <label class="form-check-label" for="energy-check">Energy Consumption</label>
-                </div>
-            </div>
-        </div>
-        
-        div.table-responsive
-            table(id="traces" class="table table-striped")
-                thead
-                    th(scope="col")= 'TraceID'
-                    th(scope="col")= 'Domain'
-                    th(scope="col")= 'Workflows'
-                    th(scope="col")= 'Tasks'
-                    th(scope="col")= 'Resources (Cores/Threads/etc.)'
-                    th(scope="col")= 'Sites'
-                    th(scope="col")= 'Users'
-                    //th(scope="col")= 'Scientific work'
+	.container-fluid.page-container
+		h1.page-title #{pageTitle}
+		
+		span Filter on trace properties.
+		<div class="container" id="trace-selection">
+			<div class="row justify-content-md-center">
+				<h3> Filter on trace properties:</h3>
+			</div>
+			<div class="row justify-content-md-center">
+				<div class="col col-lg-3">
+					<img src="/images/ram.png" alt="Memory" />
+					<input type="checkbox" class="form-check-input" id="memory-check">
+					<label class="form-check-label" for="memory-check">Memory Information</label>
+				</div>
+				<div class="col col-lg-3">
+					<img src="/images/hdd.png" class="img-fluid" alt="Disk"/>
+					<input type="checkbox" class="form-check-input" id="disk-check">
+					<label class="form-check-label" for="disk-check">Disk Usage</label>
+				</div>
+				<div class="col col-lg-3">
+					<img src="/images/transfer.png" class="img-fluid" alt="Disk I/O"/>
+					<input type="checkbox" class="form-check-input" id="diskio-check">
+					<label class="form-check-label" for="diskio-check">Disk IO</label>
+				</div>
+			</div>
+			<div class="row justify-content-md-center">
+				<div class="col col-lg-3">
+					<img src="/images/network.png" class="img-fluid" alt="Network"/>
+					<input type="checkbox" class="form-check-input" id="networkio-check">
+					<label class="form-check-label" for="networkio-check">Network IO</label>
+				</div>
+				<div class="col col-lg-3">
+					<img src="/images/group.png" class="img-fluid" alt="Group"/>
+					<input type="checkbox" class="form-check-input" id="users-check">
+					<label class="form-check-label" for="users-check">Users</label>
+				</div>
+				<div class="col col-lg-3">
+					<img src="/images/plug.png" class="img-fluid" alt="Energy"/>
+					<input type="checkbox" class="form-check-input" id="energy-check">
+					<label class="form-check-label" for="energy-check">Energy Consumption</label>
+				</div>
+			</div>
+		</div>
+		
+		div.table-responsive
+			table(id="traces" class="table table-striped")
+				thead
+					th(scope="col")= 'TraceID'
+					th(scope="col")= 'Domain'
+					th(scope="col")= 'Workflows'
+					th(scope="col")= 'Tasks'
+					th(scope="col")= 'Resources (Cores/Threads/etc.)'
+					th(scope="col")= 'Sites'
+					th(scope="col")= 'Users'
+					//th(scope="col")= 'Scientific work'
 
-                tbody
-                    each trace in traces
-                        +trace-table-row(trace)
-        
-        
-        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" crossorigin="anonymous")
-        script(src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js" crossorigin="anonymous")
-        script(src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js" crossorigin="anonymous")
-        
-        script.
-            $(document).ready(function() {
-                $('[data-toggle="tooltip"]').tooltip(); 
-                $.noConflict();
-                $('#traces').DataTable({
-                "columns": [
-                    { title: "TraceID" },
-                    { title: "Domain" },
-                    { "title": "Workflows", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
-                    { "title": "Tasks", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
-                    { "title": "Resources (Cores/Threads/etc.)", render: $.fn.dataTable.render.number(',', '.', 2, ''), className: 'text-right' },
-                    { "title": "Sites", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
-                    { "title": "Users", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
-                ],}
-                );
-            });
+				tbody
+					each trace in traces
+						+trace-table-row(trace)
+		
+		
+		link(href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet')
+		script(src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous")
+		script(src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" crossorigin="anonymous")
+		
+		script.
+		
+			var filter_map = {  // Map checkbox ID to column ID (0-index)
+				'memory-check': 7,
+				'disk-check': 8,
+				'diskio-check': 9,
+				'networkio-check': 10,
+				'users-check': 11,
+				'energy-check': 12,
+			};
+				
+			$.fn.dataTable.ext.search.push(
+				function( settings, data, dataIndex ) {
+					for(var identifier in filter_map) {
+						var col_index = filter_map[identifier];
+						var value = data[col_index];
+						// Check each filter that was enabled for this data item
+						if ($('#' + identifier).prop("checked") == true) {
+							console.log(data);
+							if (value == "" || parseFloat(value) < 0) {
+								return false;  // Does not match the filter, exclude it
+							}
+						}
+					}
+				   return true;
+				}
+			);
+			
+			$(document).ready(function() {
+				$('[data-toggle="tooltip"]').tooltip(); 
+				$.noConflict();
+				var table = $('#traces').DataTable({
+					"columnDefs": [
+						{
+							"targets": [7,8,9,10,11,12],
+							"visible": false
+						}
+					],
+					"columns": [
+						{ title: "TraceID" },
+						{ title: "Domain" },
+						{ "title": "Workflows", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+						{ "title": "Tasks", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+						{ "title": "Resources Units [sum]", render: $.fn.dataTable.render.number(',', '.', 2, ''), className: 'text-right' },
+						{ "title": "Sites", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' },
+						{ "title": "Users", render: $.fn.dataTable.render.number(',', '.', 0, ''), className: 'text-right' }
+					]
+				});
+				
+				$('#trace-selection input[type="checkbox"]').click(function() {
+					table.draw();
+				});
+			});
