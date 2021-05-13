@@ -1,0 +1,51 @@
+name: Build and publish website
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+      - run: npm install -g gulp
+      - run: npm install gulp-notify
+      - run: yarn install
+      - run: gulp
+      - run: tar -zcvf wta-site.tar.gz public/dist
+      - uses: actions/upload-artifact@v2
+        with:
+          name: wta-site-tarball
+          path: wta-site.tar.gz
+
+  publish:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y sshpass rsync
+      - uses: actions/download-artifact@v2
+        with:
+          name: wta-site-tarball
+      - run: tar -xvzf wta-site.tar.gz
+      - shell: bash
+        env:
+          WTA_SSH_PASSWORD: ${{ secrets.WTA_SSH_PASSWORD }}
+          WTA_SERVER: ${{ secrets.WTA_SERVER }}
+          WTA_SSH_USER: ${{ secrets.WTA_SSH_USER }}
+        run: rsync -r --rsh="/usr/bin/sshpass -p $WTA_SSH_PASSWORD ssh -o StrictHostKeyChecking=no" public/dist/ $WTA_SSH_USER@$WTA_SERVER:/home/$WTA_SSH_USER/$WTA_SERVER
+
+  clean:
+    runs-on: ubuntu-latest
+    needs: publish
+    steps:
+      - name: Delete Artifact
+        uses: geekyeggo/delete-artifact@v1
+        with:
+          name: wta-site-tarball
